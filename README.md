@@ -1,6 +1,6 @@
 # Plugin-WebpackTemplate
 
-Template repository for server plugins using TypeScript and Webpack.
+Template repository for server plugins using TypeScript and Vite.
 
 ## How to use
 
