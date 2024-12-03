@@ -1,6 +1,7 @@
-# Plugin-WebpackTemplate
+# Plugin-ViteTemplate
 
 Template repository for server plugins using TypeScript and Vite.
+Based on https://github.com/SillyTavern/Plugin-WebpackTemplate
 
 ## How to use
 
