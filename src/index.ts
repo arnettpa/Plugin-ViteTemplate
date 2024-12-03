@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import { Router } from 'express';
 import { Chalk } from 'chalk';
 
+// TypeScript contract for plugin exports
 interface PluginInfo {
     id: string;
     name: string;
@@ -15,7 +16,9 @@ interface Plugin {
 }
 
 const chalk = new Chalk();
-const MODULE_NAME = '[SillyTavern-Example-Plugin]';
+const MODULE_NAME = '[SillyTavern-Vite-Example-Plugin]';
+
+// You can register routes via the router that will be registered under the /api/plugins/{id}/{route} path.
 
 /**
  * Initialize the plugin.
@@ -31,6 +34,7 @@ export async function init(router: Router): Promise<void> {
     router.post('/ping', jsonParser, async (req, res) => {
         try {
             const { message } = req.body;
+            console.log(chalk.green(MODULE_NAME), `vite-example /ping: ${message}`);
             return res.json({ message: `Pong! ${message}` });
         } catch (error) {
             console.error(chalk.red(MODULE_NAME), 'Request failed', error);
@@ -38,15 +42,15 @@ export async function init(router: Router): Promise<void> {
         }
     });
 
-    console.log(chalk.green(MODULE_NAME), 'Plugin loaded!');
+    console.log(chalk.green(MODULE_NAME), 'vite-example Plugin loaded!');
 }
 
 export async function exit(): Promise<void> {
-    console.log(chalk.yellow(MODULE_NAME), 'Plugin exited');
+    console.log(chalk.yellow(MODULE_NAME), 'vite-example Plugin exited');
 }
 
 export const info: PluginInfo = {
-    id: 'example',
+    id: 'vite-example',
     name: 'Example Plugin',
     description: 'A simple example plugin for SillyTavern server.',
 };
